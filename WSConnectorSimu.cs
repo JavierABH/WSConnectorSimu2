@@ -149,15 +149,15 @@ namespace WSConnectorSimu
                     }
                     if (_serialNumber == SerialSP && _stationName == "ITA_LASER06") //Se relaciona a la primera estacion
                     {
-                        str = "1|OK: Unidad correcta SN: " + _serialNumber;
+                        str = "1|OK: Unidad correcta: SN: " + _serialNumber;
                     }
                     else if (_serialNumber == SerialSP && _stationName != "ITA_LASER06") //Se relaciona a la primera estacion
                     {
-                        str = "0|Fail: No corresponde a proceso SN: " + _serialNumber;
+                        str = "0|Fail: No corresponde a proceso: SN: " + _serialNumber;
                     }
                     else //Si no encuentra, el serial no esta registrado
                     {
-                        str = "0|Fail: Serial no encontrado SN: " + _serialNumber;
+                        str = "0|Fail: Serial no encontrado: SN: " + _serialNumber;
                     }
                 }
                 // Para llegar aqui, el serial debe estar registrado en la base de datos local con la primera prueba realizada
@@ -238,21 +238,21 @@ namespace WSConnectorSimu
                         }
                         if (ProcessByName3.Count() > 0)
                         {
-                            str = "0|Fail: No corresponde a proceso SN: " + _serialNumber; //Backcheck incorrecto, muestra estacion correcta
+                            str = "0|Fail: No corresponde a proceso: SN: " + _serialNumber; //Backcheck incorrecto, muestra estacion correcta
                         }
                         else
                         {
-                            str = "0|Fail: Estacion no encontrada SN: " + _serialNumber;  // Backcheck incorrecto por estacion inexistente
+                            str = "0|Fail: Estacion no encontrada: SN: " + _serialNumber;  // Backcheck incorrecto por estacion inexistente
                         }
                     }
                 }
                 else if (Pass_failBP == 0 && StationBP == _stationName) //Si la ultima prueba capturada en sistema es false, se permite realizar nuevamente
                 {
-                    str = "1|OK: Unidad correcta SN: " + _serialNumber;
+                    str = "1|OK: Unidad correcta: SN: " + _serialNumber;
                 }
                 else
                 {
-                    str = "0|Fail: No corresponde a proceso SN: " + _serialNumber;
+                    str = "0|Fail: No corresponde a proceso: SN: " + _serialNumber;
                 }
             }
             catch (Exception ex)
@@ -340,7 +340,7 @@ namespace WSConnectorSimu
                 writer.WriteLine(contenido);
                 // Cierre de flujo
                 writer.Close();
-                str = "OK | Insertado Correctamente";
+                str = "Ok El serial fue insertado; SN: " + ser_num + "; Id:4088963";
             }
             catch (Exception writefail)
             {
